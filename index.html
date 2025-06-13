@@ -108,7 +108,10 @@
       <div class="tab active" onclick="switchTab(this, 'chat')">Chat</div>
       <div class="tab" onclick="switchTab(this, 'files')">Fichiers</div>
     </div> -->
-    <div class="tab-content" id="content">Bienvenue sur l'interface de VictorIA. Sélectionnez un menu pour afficher son contenu.</div>
+<!--     <div class="tab-content" id="content">Bienvenue sur l'interface de VictorIA. Sélectionnez un menu pour afficher son contenu.</div> -->
+    <div class="iframe-container">
+      <iframe id="content-frame" src="https://www.notion.so/pulpmeup/archive-Journal-RichMeUp-82d75017e80d4c50a84a505a2c630999"></iframe>
+    </div>
   </div>
 
   <script>
@@ -121,11 +124,21 @@
       document.getElementById('content').innerHTML = content;
     }
 
+    const links = {
+      Homepage: "https://www.notion.so/pulpmeup/archive-Journal-RichMeUp-82d75017e80d4c50a84a505a2c630999",
+      Journal: "https://www.notion.so/example-journal-234567890abcdef1",
+      Emails: "https://www.notion.so/example-emails-34567890abcdef12",
+      Campagnes: "https://www.notion.so/example-campagnes-4567890abcdef123",
+      Reporting: "https://www.notion.so/example-reporting-567890abcdef1234",
+      Ressources: "https://www.notion.so/example-ressources-67890abcdef12345"
+    };
+
     function switchPage(pageName, el) {
       document.querySelectorAll('.menu-item').forEach(t => t.classList.remove('active'));
       el.classList.add('active');
       document.getElementById('page-title').innerText = pageName;
-      document.getElementById('content').innerText = `Contenu de la page « ${pageName} »`;
+      //document.getElementById('content').innerText = `Contenu de la page « ${pageName} »`;
+      document.getElementById('content-frame').src = links[pageName];
     }
   </script>
 </body>
