@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VictorIA SaaS Interface</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #f9f9f9;
+      border-right: 1px solid #e0e0e0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo {
+      padding: 16px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #2c2382;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .menu-item {
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      color: #2c2382;
+      text-decoration: none;
+      cursor: pointer;
+      border-left: 4px solid transparent;
+      transition: 0.2s;
+    }
+
+    .menu-item:hover,
+    .menu-item.active {
+      background-color: #e63062;
+      color: #fff;
+      border-left: 4px solid #2c2382;
+    }
+
+    .menu-item .icon {
+      margin-right: 10px;
+    }
+
+    .main {
+      flex: 1;
+      padding: 24px;
+    }
+
+    .main h1 {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 16px;
+    }
+
+    .tab {
+      padding: 8px 16px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .tab.active {
+      border-bottom: 3px solid black;
+    }
+
+    .tab-content {
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo">🤖 VictorIA</div>
+    <div class="menu-item active" onclick="switchPage('Homepage', this)"><span class="icon">🏠</span> Homepage</div>
+    <div class="menu-item" onclick="switchPage('Journal des activités', this)"><span class="icon">📝</span> Journal des activités</div>
+    <div class="menu-item" onclick="switchPage('Adresses emails', this)"><span class="icon">📧</span> Adresses emails</div>
+    <div class="menu-item" onclick="switchPage('Campagnes', this)"><span class="icon">🎯</span> Campagnes</div>
+    <div class="menu-item" onclick="switchPage('Reporting', this)"><span class="icon">📈</span> Reporting</div>
+    <div class="menu-item" onclick="switchPage('Resource center', this)"><span class="icon">📚</span> Resource center</div>
+  </div>
+
+  <div class="main">
+    <h1 id="page-title">Homepage</h1>
+    <!-- <div class="tabs">
+      <div class="tab active" onclick="switchTab(this, 'chat')">Chat</div>
+      <div class="tab" onclick="switchTab(this, 'files')">Fichiers</div>
+    </div> -->
+    <div class="tab-content" id="content">Bienvenue sur l'interface de VictorIA. Sélectionnez un menu pour afficher son contenu.</div>
+  </div>
+
+  <script>
+    function switchTab(el, tabName) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      const content = tabName === 'chat'
+        ? 'Section Chat sélectionnée.'
+        : 'Aucun fichier disponible.';
+      document.getElementById('content').innerHTML = content;
+    }
+
+    function switchPage(pageName, el) {
+      document.querySelectorAll('.menu-item').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('page-title').innerText = pageName;
+      document.getElementById('content').innerText = `Contenu de la page « ${pageName} »`;
+    }
+  </script>
+</body>
+</html>
