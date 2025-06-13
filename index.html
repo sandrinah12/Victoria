@@ -44,13 +44,11 @@
       align-items: center;
       color: #2c2382;
       text-decoration: none;
-      cursor: pointer;
       border-left: 4px solid transparent;
       transition: 0.2s;
     }
 
-    .menu-item:hover,
-    .menu-item.active {
+    .menu-item:hover {
       background-color: #e63062;
       color: #fff;
       border-left: 4px solid #2c2382;
@@ -59,87 +57,29 @@
     .menu-item .icon {
       margin-right: 10px;
     }
-
-    .main {
-      flex: 1;
-      padding: 24px;
-    }
-
-    .main h1 {
-      font-size: 20px;
-      margin-bottom: 16px;
-    }
-
-    .tabs {
-      display: flex;
-      border-bottom: 1px solid #ccc;
-      margin-bottom: 16px;
-    }
-
-    .tab {
-      padding: 8px 16px;
-      cursor: pointer;
-      font-weight: 500;
-    }
-
-    .tab.active {
-      border-bottom: 3px solid black;
-    }
-
-    .tab-content {
-      font-size: 15px;
-    }
   </style>
 </head>
 <body>
   <div class="sidebar">
     <div class="logo">🤖 VictorIA</div>
-    <div class="menu-item active" onclick="switchPage('Homepage', this)"><span class="icon">🏠</span> Homepage</div>
-    <div class="menu-item" onclick="switchPage('Journal des activités', this)"><span class="icon">📝</span> Journal des activités</div>
-    <div class="menu-item" onclick="switchPage('Adresses emails', this)"><span class="icon">📧</span> Adresses emails</div>
-    <div class="menu-item" onclick="switchPage('Campagnes', this)"><span class="icon">🎯</span> Campagnes</div>
-    <div class="menu-item" onclick="switchPage('Reporting', this)"><span class="icon">📈</span> Reporting</div>
-    <div class="menu-item" onclick="switchPage('Resource center', this)"><span class="icon">📚</span> Resource center</div>
+    <a class="menu-item" href="https://www.notion.so/Homepage-211b191d10758090bd05c7a2d16355c3" target="_blank">
+      <span class="icon">🏠</span> Homepage
+    </a>
+    <a class="menu-item" href="https://www.notion.so/Journal-des-activit-s-211b191d10758085926cc3776bde6cfe" target="_blank">
+      <span class="icon">📝</span> Journal des activités
+    </a>
+    <a class="menu-item" href="https://www.notion.so/Adresses-emails-210b191d1075806baed4ff91fa048372" target="_blank">
+      <span class="icon">📧</span> Adresses emails
+    </a>
+    <a class="menu-item" href="https://www.notion.so/Campagnes-211b191d107580128d0bc7b54361c0dc" target="_blank">
+      <span class="icon">🎯</span> Campagnes
+    </a>
+    <a class="menu-item" href="https://www.notion.so/Reporting-211b191d107580b6ab40ed50a0105528" target="_blank">
+      <span class="icon">📊</span> Reporting
+    </a>
+    <a class="menu-item" href="https://www.notion.so/Resource-Center-211b191d1075808185e4e9770d3c359a" target="_blank">
+      <span class="icon">📚</span> Resource Center
+    </a>
   </div>
-
-  <div class="main">
-    <h1 id="page-title">Homepage</h1>
-    <!-- <div class="tabs">
-      <div class="tab active" onclick="switchTab(this, 'chat')">Chat</div>
-      <div class="tab" onclick="switchTab(this, 'files')">Fichiers</div>
-    </div> -->
-<!--     <div class="tab-content" id="content">Bienvenue sur l'interface de VictorIA. Sélectionnez un menu pour afficher son contenu.</div> -->
-    <div class="iframe-container">
-      <iframe id="content-frame" src="https://www.notion.so/pulpmeup/archive-Journal-RichMeUp-82d75017e80d4c50a84a505a2c630999"></iframe>
-    </div>
-  </div>
-
-  <script>
-    function switchTab(el, tabName) {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      el.classList.add('active');
-      const content = tabName === 'chat'
-        ? 'Section Chat sélectionnée.'
-        : 'Aucun fichier disponible.';
-      document.getElementById('content').innerHTML = content;
-    }
-
-    const links = {
-      Homepage: "https://www.notion.so/pulpmeup/archive-Journal-RichMeUp-82d75017e80d4c50a84a505a2c630999",
-      Journal: "https://www.notion.so/example-journal-234567890abcdef1",
-      Emails: "https://www.notion.so/example-emails-34567890abcdef12",
-      Campagnes: "https://www.notion.so/example-campagnes-4567890abcdef123",
-      Reporting: "https://www.notion.so/example-reporting-567890abcdef1234",
-      Ressources: "https://www.notion.so/example-ressources-67890abcdef12345"
-    };
-
-    function switchPage(pageName, el) {
-      document.querySelectorAll('.menu-item').forEach(t => t.classList.remove('active'));
-      el.classList.add('active');
-      document.getElementById('page-title').innerText = pageName;
-      //document.getElementById('content').innerText = `Contenu de la page « ${pageName} »`;
-      document.getElementById('content-frame').src = links[pageName];
-    }
-  </script>
 </body>
 </html>
